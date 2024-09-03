@@ -1,6 +1,10 @@
 class VinylsController < ApplicationController
   before_action :set_vinyls, only: %i[destroy show edit update]
 
+  def home
+    @vinyls = Vinyl.all
+  end
+
   def index
     @vinyls = Vinyl.all
   end
