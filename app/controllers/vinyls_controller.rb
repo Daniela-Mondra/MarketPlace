@@ -1,7 +1,12 @@
 class VinylsController < ApplicationController
 
+  before_action :set_vinyls, only: :show
+
   def index
     @vinyls = Vinyl.all
+  end
+
+  def show
   end
 
   def new
@@ -34,6 +39,10 @@ class VinylsController < ApplicationController
 
   private
 
+  def set_vinyls
+    @vinyl = Vinyl.find(params[:id])
+  end
+    
   def vinyl_params
     params.require(:vinyl).permit(:title, :artist, :genre, :price)
   end

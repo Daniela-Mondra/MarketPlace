@@ -1,14 +1,13 @@
-<div class="container mt-3">
-
   <h1>Vinyls</h1>
 
   <div id="vinyls">
 
-      <% @vinyls.each_with_index do |vinyl, index| %>
-           <ul>
-            <li><%= vinyl.title %></li>
-           </ul>
+      <% @vinyls.each do |vinyl|%>
+      <li class="list-group-item">
+          <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none"%>
+      </li>
       <% end %>
     </div>
   </div>
 </div>
+
