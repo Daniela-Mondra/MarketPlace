@@ -42,3 +42,13 @@ users = User.all
   end
 end
 puts Vinyl.all
+
+# users = User.all
+# users_id = users.flat_map { |u| u[:id] }
+
+# vinyls = Vinyl.all
+# vinyls_id = vinyls.flat_map { |u| u[:id] }
+
+# 3.times do
+#   Sale.create(vinyl_id: vinyls_id.sample, user_id: users_id.sample)
+# end
