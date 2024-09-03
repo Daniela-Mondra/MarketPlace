@@ -1,7 +1,13 @@
-<ul class="list-group">
+  <h1>Vinyls</h1>
+
+  <div id="vinyls">
+
       <% @vinyls.each do |vinyl|%>
       <li class="list-group-item">
           <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none"%>
       </li>
       <% end %>
-    </ul>
+    </div>
+  </div>
+</div>
+
