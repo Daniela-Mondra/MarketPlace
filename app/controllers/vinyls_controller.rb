@@ -4,7 +4,6 @@ class VinylsController < ApplicationController
     @vinyls = Vinyl.all
   end
 
-
   def new
     @vinyl = Vinyl.new
   end
@@ -27,6 +26,11 @@ class VinylsController < ApplicationController
     @vinyl = Vinyl.find(params[:id])
     redirect_to vinyls_path, notice: 'Vinyl was successfully updated.' if @vinyl.update(vinyl_params)
   end
+    
+     def destroy
+      @vinyl.destroy
+      redirect_to vinyls_path, notice: 'Deleted'
+     end
 
   private
 
