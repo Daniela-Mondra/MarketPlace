@@ -1,7 +1,6 @@
 class VinylsController < ApplicationController
-  resources :vinyls
-
+  
   def index
-    @vinyls = Vinyl.all    
+    @vinyls = Vinyl.all
   end
 end
