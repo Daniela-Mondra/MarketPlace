@@ -1,5 +1,5 @@
 <div class="container m-3">
-  <h1>New Vinyl</h1>
+  <h1>Edit Vinyl</h1>
 
   <div class="container m-3" style="width: 500px;">
     <%= simple_form_for(@vinyl) do |f| %>
@@ -14,10 +14,14 @@
 
       <div class="form-actions">
         <%= f.button :submit, class: "btn btn-success" %>
+        <%= link_to 'Cancel', vinyl_path(@vinyl), class: 'btn btn-secondary' %>
       </div>
     <% end %>
   </div>
 
-
   <br>
+
+  <div>
+    <%= link_to "Back to all Vinyls", vinyls_path, class: "btn btn-primary" %>
+  </div>
 </div>
