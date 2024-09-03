@@ -1,0 +1,14 @@
+<div class="container mt-3">
+
+  <h1>Vinyls</h1>
+
+  <div id="vinyls">
+
+      <% @vinyls.each_with_index do |vinyl, index| %>
+           <ul>
+            <li><%= vinyl.title %></li>
+           </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

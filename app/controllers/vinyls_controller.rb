@@ -4,9 +4,24 @@ class VinylsController < ApplicationController
     @vinyls = Vinyl.all
   end
 
-  def edit
-    @vinyl = Vinyl.find(params[:id])
+
+  def new
+    @vinyl = Vinyl.new
   end
+
+   def edit
+    @vinyl = Vinyl.find(params[:id])
+  end 
+  
+  def create
+    @vinyl = Vinyl.new(vinyl_params)
+    @vinyl.user = current_user
+
+    if @vinyl.save
+      redirect_to vinyls_path(@vinyl), notice: 'Vinyl was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
 
   def update
     @vinyl = Vinyl.find(params[:id])

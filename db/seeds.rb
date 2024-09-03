@@ -7,3 +7,38 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# validates :genre, inclusion: { in: %w[Rock Pop Electronic Jazz Hip-hop] } require 'faker'
+require 'faker'
+users = User.all.count
+
+if users.zero?
+  5.times do
+    name, last_name = Faker::Name.name.split
+
+    initial_user = {
+      email: "#{name}@gmail.com",
+      password: "password",
+      first_name: name,
+      last_name: last_name || "Flores",
+      address: Faker::Address.full_address
+    }
+    User.create(initial_user)
+  end
+
+  puts User.all
+end
+
+users = User.all
+%w[Rock Pop Electronic Jazz Hip-hop].each do |genre_music|
+  3.times do
+    initial_vinyl = {
+      title: Faker::Music.album,
+      artist: Faker::Music.band,
+      genre: genre_music,
+      price: Faker::Number.between(from: 40, to: 250),
+      user_id: users.flat_map { |u| u[:id] }.sample
+    }
+    Vinyl.create(initial_vinyl)
+  end
+end
+puts Vinyl.all
