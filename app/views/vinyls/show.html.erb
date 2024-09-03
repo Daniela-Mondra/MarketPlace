@@ -2,3 +2,7 @@
 <h2><%= @vinyl.artist %></h2>
 <h2><%= @vinyl.genre %></h2>
 <h2><%= @vinyl.price %></h2>
+
+<div class="my-5">
+  <%= link_to "Buy", new_vinyl_sale_path(@vinyl) , class: "btn btn-primary" %>
+</div>
