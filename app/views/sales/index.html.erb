@@ -1,0 +1,10 @@
+<h1>Sales</h1>
+
+<div class="d-flex flex-column gap-3">
+  <% @sales.each do |sale| %>
+    <div class="card">
+      <p>vinyl_id <%= sale.vinyl_id %></p>
+      <p>user_id <%= sale.user_id %></p>
+    </div>
+  <% end %>
+</div>

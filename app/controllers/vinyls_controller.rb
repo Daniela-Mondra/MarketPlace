@@ -1,6 +1,5 @@
 class VinylsController < ApplicationController
-
-  before_action :set_vinyls, only: :show
+  before_action :set_vinyls, only: %i[destroy show edit update]
 
   def home
     @vinyls = Vinyl.all
@@ -17,8 +16,7 @@ class VinylsController < ApplicationController
     @vinyl = Vinyl.new
   end
 
-   def edit
-    @vinyl = Vinyl.find(params[:id])
+  def edit
   end
 
   def create
@@ -33,14 +31,14 @@ class VinylsController < ApplicationController
   end
 
   def update
-    @vinyl = Vinyl.find(params[:id])
     redirect_to vinyls_path, notice: 'Vinyl was successfully updated.' if @vinyl.update(vinyl_params)
   end
 
-     def destroy
-      @vinyl.destroy
-      redirect_to vinyls_path, notice: 'Deleted'
-     end
+  def destroy
+    @vinyl.destroy
+    flash[:notice] = 'Vinyl was deleted.'
+    redirect_to vinyls_path
+  end
 
   private
 
@@ -49,6 +47,6 @@ class VinylsController < ApplicationController
   end
 
   def vinyl_params
-    params.require(:vinyl).permit(:title, :artist, :genre, :price)
+    params.require(:vinyl).permit(:title, :artist, :genre, :price, :photo, :description)
   end
 end

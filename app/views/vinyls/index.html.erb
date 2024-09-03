@@ -1,13 +1,23 @@
 
-
-
+<div class="container">
+  <h1>Vinyls</h1>
 
   <div id="vinyls">
-      <% @vinyls.each do |vinyl|%>
-      <li class="list-group-item">
-          <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none"%>
-      </li>
+    <ul class="list-group">
+      <% @vinyls.each do |vinyl| %>
+        <li class="list-group-item">
+          <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none" %>
+
+          <%= link_to 'Edit', edit_vinyl_path(vinyl), class: "btn btn-primary btn-sm float-end ms-2" %>
+
+          <%= form_for vinyl, url: vinyl_path(vinyl), method: :delete, html: { class: 'float-end ms-2' } do %>
+            <%= button_tag(type: :submit, class: "btn btn-danger btn-sm btn-rounded", data: { confirm: 'Are you sure ?' }) do %>
+              Delete
+            <% end %>
+          <% end %>
+        </li>
+
       <% end %>
-    </div>
+    </ul>
   </div>
 </div>
