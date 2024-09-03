@@ -1,5 +1,4 @@
 class VinylsController < ApplicationController
-
   before_action :set_vinyls, only: :show
 
   def index
