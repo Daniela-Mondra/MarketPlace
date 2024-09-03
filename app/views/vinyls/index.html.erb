@@ -1,1 +1,13 @@
-<h1>vinyl-index</h1>
+  <h1>Vinyls</h1>
+
+  <div id="vinyls">
+
+      <% @vinyls.each do |vinyl|%>
+      <li class="list-group-item">
+          <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none"%>
+      </li>
+      <% end %>
+    </div>
+  </div>
+</div>
+
