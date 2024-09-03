@@ -1,4 +1,30 @@
-<h1>"<%= @vinyl.title %>"</h1>
-<h2><%= @vinyl.artist %></h2>
-<h2><%= @vinyl.genre %></h2>
-<h2><%= @vinyl.price %></h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- Columna izquierda de 7/12 -->
+    <div class="col-5 mt-3">
+      <div class="card card-body">
+        <h1><%= @vinyl.title %></h1>
+        <p><%= @vinyl.artist %></p>
+        <%= cl_image_tag @vinyl.photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+    </div>
+    <!-- Columna derecha de 3/12 -->
+    <div class="col-7 mt-3">
+      <div class="card card-body">
+        <h3>Details</h3>
+        <div class="extra_info d-flex">
+          <div class="genre">
+            <p><i class="fa-solid fa-music"></i> Genre: <%= @vinyl.genre %></p>
+          </div>
+          <div class="price ms-5">
+            <p><i class="fa-solid fa-dollar-sign"></i> <%= @vinyl.price %></p>
+          </div>
+        </div>
+        <p>Description:</p>
+        <p><%= @vinyl.description %></p>
+        <p>Saled by:</p>
+        <p><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+      </div>
+    </div>
+  </div>
+</div>
