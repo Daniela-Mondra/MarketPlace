@@ -1,5 +1,4 @@
 class VinylsController < ApplicationController
-
   before_action :set_vinyls, only: %i[destroy show edit update]
 
   def index
@@ -44,6 +43,6 @@ class VinylsController < ApplicationController
   end
 
   def vinyl_params
-    params.require(:vinyl).permit(:title, :artist, :genre, :price)
+    params.require(:vinyl).permit(:title, :artist, :genre, :price, :photo, :description)
   end
 end
