@@ -1,27 +1,29 @@
-<div class="container m-3">
-  <h1>Edit Vinyl</h1>
+<div class="background-image py-3" style="background-image: url(<%= asset_path 'vinylbw.jpg' %>); background-size: cover; background-position: center;">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="container-custom m-3 p-4 border" style="background-color: rgba(255, 255, 255);">
+        <h1 class="text-center">Edit Vinyl</h1>
 
-  <div class="container m-3" style="width: 500px;">
-    <%= simple_form_for(@vinyl) do |f| %>
-      <%= f.error_notification %>
+        <div class="container">
+          <%= simple_form_for(@vinyl) do |f| %>
+            <%= f.error_notification %>
 
-      <div class="form-inputs">
-        <%= f.input :title %>
-        <%= f.input :artist %>
-        <%= f.input :genre, as: :select, collection: %w[Rock Pop Electronic Jazz Hip-hop], prompt: "Select a genre" %>
-        <%= f.input :price %>
+            <div class="form-inputs">
+              <%= f.input :title %>
+              <%= f.input :artist %>
+              <%= f.input :genre, as: :select, collection: %w[Rock Pop Electronic Jazz Hip-hop], prompt: "Select a genre" %>
+              <%= f.input :description %>
+              <%= f.input :price %>
+              <%= f.input :photo, as: :file %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, class: "btn btn-success" %>
+              <%= link_to 'Cancel', vinyls_path, class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+         </div>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, class: "btn btn-success" %>
-        <%= link_to 'Cancel', vinyl_path(@vinyl), class: 'btn btn-secondary' %>
-      </div>
-    <% end %>
-  </div>
-
-  <br>
-
-  <div>
-    <%= link_to "Back to all Vinyls", vinyls_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>

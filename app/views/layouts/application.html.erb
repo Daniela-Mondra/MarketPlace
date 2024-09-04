@@ -12,14 +12,12 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="container py-5">
-      <%= yield %>
-      <div class="alert alert-primary" role="alert">
-        <%= notice %>
-      </div>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
-      </div>
+    <%= yield %>
+    <div class="alert alert-primary" role="alert">
+      <%= notice %>
+    </div>
+     <div class="alert alert-danger" role="alert">
+     <%= alert %>
     </div>
   </body>
 </html>
