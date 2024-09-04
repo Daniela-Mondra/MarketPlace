@@ -2,11 +2,11 @@ class VinylsController < ApplicationController
   before_action :set_vinyls, only: %i[destroy show edit update]
 
   def home
-    @vinyls = Vinyl.all
+    @vinyls = Vinyl.all.order(created_at: :desc)
   end
 
   def index
-    @vinyls = Vinyl.all
+    @vinyls = Vinyl.all.order(created_at: :desc)
   end
 
   def show
