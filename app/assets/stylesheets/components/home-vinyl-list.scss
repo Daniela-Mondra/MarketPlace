@@ -3,8 +3,17 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  transition: 0.25s ease;
+  color: black;
+  &:hover {
+    transform: scale(1.1);
+}
 }
 
+.card-link {
+  text-decoration: none;
+}
 .card-vinyl > img {
   height: 200px;
   width: 100%;

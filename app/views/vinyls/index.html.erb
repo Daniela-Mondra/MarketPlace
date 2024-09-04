@@ -1,23 +1,37 @@
+<div class="container-fluid">
+  <h1 class="my-4 text-center">Vinyls</h1>
 
-<div class="container">
-  <h1>Vinyls</h1>
-
-  <div id="vinyls">
-    <ul class="list-group">
-      <% @vinyls.each do |vinyl| %>
-        <li class="list-group-item">
-          <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none" %>
-
-          <%= link_to 'Edit', edit_vinyl_path(vinyl), class: "btn btn-primary btn-sm float-end ms-2" %>
-
-          <%= form_for vinyl, url: vinyl_path(vinyl), method: :delete, html: { class: 'float-end ms-2' } do %>
-            <%= button_tag(type: :submit, class: "btn btn-danger btn-sm btn-rounded", data: { confirm: 'Are you sure ?' }) do %>
-              Delete
-            <% end %>
+  <div id="vinyls" class="row">
+    <% @vinyls.each do |vinyl| %>
+      <div class="col-md-4 mb-4">
+        <div class="card-custom card border-2 shadow-lg">
+          <% if vinyl.photo.present? %>
+            <%= image_tag vinyl.photo.url, alt: vinyl.title, class: "card-img-top img-fluid" %>
           <% end %>
-        </li>
+          <div class="card-body text-center">
 
-      <% end %>
-    </ul>
+            <h5 class="card-title mb-2 fs-4">
+              <%= link_to vinyl.title, vinyl_path(vinyl), class: "text-decoration-none text-blue" %>
+            </h5>
+
+            <p class="card-text mb-2 text-muted">
+              <%= vinyl.artist %>
+            </p>
+
+            <p class="card-text mb-3">
+              <%= number_to_currency(vinyl.price) %>
+            </p>
+            <div class="d-flex justify-content-center">
+              <%= link_to 'Edit', edit_vinyl_path(vinyl), class: "btn btn-primary btn me-2" %>
+              <%= form_for vinyl, url: vinyl_path(vinyl), method: :delete, html: { class: 'd-inline' } do %>
+                <%= button_tag(type: :submit, class: "btn btn-danger btn", data: { confirm: 'Are you sure?' }) do %>
+                  Delete
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

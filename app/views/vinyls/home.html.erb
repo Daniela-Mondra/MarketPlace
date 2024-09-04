@@ -2,7 +2,7 @@
   <div class="container">
     <h1><strong>FALL</strong>-ing <strong>prices for our September Sale</strong>!</h1>
     <p>20% OFF in all vynil records.</p>
-    <a class="btn btn-success" href="#">Apply now</a>
+    <%= link_to "Buy now", "#", class: "btn btn-gradient" %>
   </div>
 </div>
 
@@ -32,20 +32,22 @@
 </div>
 
 <div class= "container m-5 mx-auto">
-  <h2 class="text-center">Recenly Added</h2>
+  <h2 class="text-center mb-4">Recently Added</h2>
   <div class="r-added-cards">
     <% @vinyls.each do |vinyl| %>
-    <div class="card-vinyl">
-      <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill %>
-      <div class="card-vinyl-infos">
-        <div>
-         <h2><%= vinyl.title %></h2>
-          <p><%= vinyl.artist %></p>
-          <p><%= vinyl.genre %></p>
+     <%= link_to vinyl_path(vinyl), class: "card-link" do %>
+      <div class="card-vinyl">
+        <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill %>
+        <div class="card-vinyl-infos">
+          <div>
+          <h2><%= vinyl.title %></h2>
+            <p><%= vinyl.artist %></p>
+            <p><%= vinyl.genre %></p>
+          </div>
+        <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
         </div>
-       <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
       </div>
-    </div>
+    <% end %>
     <% end %>
   </div>
 </div>

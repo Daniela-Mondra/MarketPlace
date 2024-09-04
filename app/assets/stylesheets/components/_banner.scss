@@ -18,3 +18,20 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+
+.btn-gradient {
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #ffb703;
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background-color: #ffb703;
+  opacity: 1;
+  color: white;
+}
