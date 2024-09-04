@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <h1 class="my-4 text-center">Vinyls</h1>
+  <h1 class="my-4 text-center">My vinyls on sale:</h1>
 
   <div id="vinyls" class="row">
     <% @vinyls.each do |vinyl| %>
       <div class="col-md-4 mb-4">
         <div class="card-custom card border-2 shadow-lg">
           <% if vinyl.photo.present? %>
-            <%= image_tag vinyl.photo.url, alt: vinyl.title, class: "card-img-top img-fluid" %>
+            <%= cl_image_tag vinyl.photo.key, alt: vinyl.title, class: "card-img-top img-fluid" %>
           <% end %>
           <div class="card-body text-center">
 
