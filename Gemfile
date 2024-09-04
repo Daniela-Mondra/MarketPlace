@@ -80,3 +80,5 @@ end
 
 # Faker
 gem 'faker'
+gem 'open-uri'
+gem 'json'
