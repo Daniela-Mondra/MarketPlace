@@ -1,28 +1,31 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <!-- Columna izquierda de 7/12 -->
-    <div class="col-5 mt-3">
-      <div class="card card-body">
-        <h1><%= @vinyl.title %></h1>
-        <p><%= @vinyl.artist %></p>
-        <%= cl_image_tag @vinyl.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
-    </div>
-    <!-- Columna derecha de 3/12 -->
-    <div class="col-7 mt-3"> <div class="card card-body">
-        <h3>Details</h3>
-        <div class="extra_info d-flex">
-          <div class="genre">
-            <p><i class="fa-solid fa-music"></i> Genre: <%= @vinyl.genre %></p>
-          </div>
-          <div class="price ms-5">
-            <p><i class="fa-solid fa-dollar-sign"></i> <%= @vinyl.price %></p>
-          </div>
+<div class="background-image py-3" style="background-image: url(<%= asset_path 'vinyls.jpg' %>); background-size: cover; background-position: center;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Columna izquierda de 7/12 -->
+      <div class="col-5 mt-3">
+        <div class="card card-body">
+          <h1><%= @vinyl.title %></h1>
+          <p><%= @vinyl.artist %></p>
+          <%= cl_image_tag @vinyl.photo.key, height: 300, width: 400, crop: :fill %>
         </div>
-        <p>Description:</p>
-        <p><%= @vinyl.description %></p>
-        <p>Saled by:</p>
-        <p><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+      </div>
+      <!-- Columna derecha de 3/12 -->
+      <div class="col-7 mt-3"> <div class="card card-body">
+          <h3>Details</h3>
+          <div class="extra_info d-flex">
+            <div class="genre">
+              <p><i class="fa-solid fa-music"></i> Genre: <%= @vinyl.genre %></p>
+            </div>
+            <div class="price ms-5">
+              <p><i class="fa-solid fa-dollar-sign"></i> <%= @vinyl.price %></p>
+            </div>
+          </div>
+          <p>Description:</p>
+          <p><%= @vinyl.description %></p>
+          <p>Saled by:</p>
+          <p><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+          <%= link_to 'BUY NOW!', new_vinyl_sale_path(@vinyl), class: 'btn btn-warning text-white', style:"font-size: 30px;"%>
+        </div>
       </div>
     </div>
   </div>
