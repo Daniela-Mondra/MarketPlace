@@ -17,28 +17,37 @@ GENRES_MUSIC = %w[Rock Pop Electronic Jazz Hip-hop]
 puts "Cleaning up database..."
 Sale.destroy_all
 Vinyl.destroy_all
+User.destroy_all
 puts "Database cleaned"
 
-def create_user(name, last_name)
+def base_user(user)
   initial_user = {
-    email: "#{name}@gmail.com",
+    email: user["email"],
     password: "password",
-    first_name: name,
-    last_name: last_name || "Flores",
+    first_name: user["name"]["first"],
+    last_name: user["name"]["last"] || "Flores",
     address: Faker::Address.full_address
   }
-  User.create(initial_user)
+  return User.new(initial_user)
 end
 
+def create_user
+  url = "https://randomuser.me/api/?page=3&results=5&seed=abc"
+  users = JSON.parse(URI.open(url).read)["results"]
+  users.each do |user|
+    file_name = user["id"]["value"] || user["name"]["first"]
+    file = URI.parse(user["picture"]["large"]).open
+    user_content = base_user(user)
+    user_content.photo.attach(io: file, filename: file_name, content_type: "image/png")
+    user_content.save
+  end
+end
 users_count = User.all.count
 
 if users_count.zero?
-  5.times do
-    name, last_name = Faker::Name.name.split
-    create_user(name, last_name)
-  end
-
-  puts User.all
+  puts "Creating users..."
+  create_user
+  puts "Users: #{User.all.count}"
 end
 
 def base_vinyl(album, users)
@@ -65,8 +74,9 @@ def create_vinyl
   end
 end
 
+puts "Creating vinyls..."
 create_vinyl
-puts Vinyl.all
+puts "Vinyls: #{Vinyl.all.count}"
 
 # users = User.all
 # users_id = users.flat_map { |u| u[:id] }
