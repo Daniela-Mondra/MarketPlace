@@ -41,25 +41,25 @@ if users_count.zero?
   puts User.all
 end
 
+def base_vinyl(album, users)
+  initial_vinyl = {
+    title: album['name'],
+    artist: album["artists"][0]["name"],
+    genre: GENRES_MUSIC.sample,
+    price: Faker::Number.between(from: 40, to: 250),
+    description: Faker::Music::SmashingPumpkins.lyric,
+    user_id: users.flat_map { |u| u[:id] }.sample
+  }
+  return Vinyl.new(initial_vinyl)
+end
 
 def create_vinyl
   url = "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?limit=15"
   users = User.all
   albums = JSON.parse(URI.open(url, "Authorization" => ENV['API_TOKEN']).read)["items"]
   albums.each do |album|
-    # puts "Creating #{album['name']}"
-    # puts album['artists'][0]['name']
-    # puts album['images'][0]['url']
     file = URI.parse(album["images"][0]["url"]).open
-    initial_vinyl = {
-      title: album['name'],
-      artist: album["artists"][0]["name"],
-      genre: GENRES_MUSIC.sample,
-      price: Faker::Number.between(from: 40, to: 250),
-      description: Faker::Music::SmashingPumpkins.lyric,
-      user_id: users.flat_map { |u| u[:id] }.sample
-    }
-    vinyl = Vinyl.new(initial_vinyl)
+    vinyl = base_vinyl(album, users)
     vinyl.photo.attach(io: file, filename: album["id"], content_type: "image/png")
     vinyl.save
   end
