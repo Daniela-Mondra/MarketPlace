@@ -1,6 +1,6 @@
 class Vinyl < ApplicationRecord
   belongs_to :user
-  has_many :sales
+  has_many :sales, dependent: :destroy
   has_one_attached :photo
   validates :title, presence: true
   validates :artist, presence: true

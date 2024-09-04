@@ -1,25 +1,36 @@
-<h1 class="m-0"> New Sale</h1>
+<div class="background-image py-3" style="background-image: url(<%= asset_path 'people.jpg' %>); background-size: cover; background-position: center;">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="container-custom m-3 p-4 border text-center" style="background-color: rgba(255, 255, 255);">
+        <h1 class="m-0"> New Sale</h1>
 
-<div>
-  <div class="card my-2" style="width: 18rem;">
-    <div class="card-body d-flex flex-column gap-3">
-      <h5 class="card-title m-0 fw-bold"><%= @vinyl.title %></h5>
-      <h6 class="card-subtitle m-0 text-muted"> <strong>Artist:</strong> <%= @vinyl.artist %></h6>
-      <p class="card-text m-0 text-muted"> <strong>Genre: </strong> <%= @vinyl.genre %></p>
-      <%  price = @vinyl.price.to_f %>
-      <p class="card-text m-0"><strong>Total amount: </strong> $ <%= price %></p>
+        <div class="d-flex justify-content-center">
+          <div class="card my-2" style="width: 18rem;">
+            <div class="card-body d-flex flex-column align-items-center gap-3">
+              <%= cl_image_tag @vinyl.photo.key, height: 200, width: 200, crop: :fill %>
+              <h5 class="card-title m-0 fw-bold"><%= @vinyl.title %></h5>
+              <h6 class="card-subtitle m-0 text-muted"> <strong>Artist:</strong> <%= @vinyl.artist %></h6>
+              <p class="card-text m-0 text-muted"> <strong>Genre: </strong> <%= @vinyl.genre %></p>
+              <%  price = @vinyl.price.to_f %>
+              <p class="card-text m-0"><strong>Total amount: </strong> $ <%= price %></p>
+            </div>
+          </div>
+        </div>
+
+          <%= simple_form_for [@vinyl, @sale] do |f| %>
+            <p>Are you sure you want to buy this vinyl?</p>
+
+            <div class="form-inputs">
+              <%= f.hidden_field :vinyl_id, value: @vinyl.id %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.submit "Yes", class: "btn btn-success" %>
+              <%= link_to "No", vinyl_path(@vinyl), class: "btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <%= simple_form_for [@vinyl, @sale] do |f| %>
-    <p>Are you sure to buy this vinyl?</p>
-
-    <div class="form-inputs">
-      <%= f.hidden_field :vinyl_id, value: @vinyl.id %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit "Yes", class: "btn btn-success" %>
-      <%= link_to "No", vinyl_path(@vinyl), class: "btn btn-danger" %>
-    </div>
-  <% end %>
 </div>
