@@ -9,38 +9,63 @@
 #   end
 # validates :genre, inclusion: { in: %w[Rock Pop Electronic Jazz Hip-hop] } require 'faker'
 require 'faker'
-users = User.all.count
+require "open-uri"
+require "json"
 
-if users.zero?
+GENRES_MUSIC = %w[Rock Pop Electronic Jazz Hip-hop]
+
+puts "Cleaning up database..."
+Sale.destroy_all
+Vinyl.destroy_all
+puts "Database cleaned"
+
+def create_user(name, last_name)
+  initial_user = {
+    email: "#{name}@gmail.com",
+    password: "password",
+    first_name: name,
+    last_name: last_name || "Flores",
+    address: Faker::Address.full_address
+  }
+  User.create(initial_user)
+end
+
+users_count = User.all.count
+
+if users_count.zero?
   5.times do
     name, last_name = Faker::Name.name.split
-
-    initial_user = {
-      email: "#{name}@gmail.com",
-      password: "password",
-      first_name: name,
-      last_name: last_name || "Flores",
-      address: Faker::Address.full_address
-    }
-    User.create(initial_user)
+    create_user(name, last_name)
   end
 
   puts User.all
 end
 
-users = User.all
-%w[Rock Pop Electronic Jazz Hip-hop].each do |genre_music|
-  3.times do
+
+def create_vinyl
+  url = "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?limit=15"
+  users = User.all
+  albums = JSON.parse(URI.open(url, "Authorization" => ENV['API_TOKEN']).read)["items"]
+  albums.each do |album|
+    # puts "Creating #{album['name']}"
+    # puts album['artists'][0]['name']
+    # puts album['images'][0]['url']
+    file = URI.parse(album["images"][0]["url"]).open
     initial_vinyl = {
-      title: Faker::Music.album,
-      artist: Faker::Music.band,
-      genre: genre_music,
+      title: album['name'],
+      artist: album["artists"][0]["name"],
+      genre: GENRES_MUSIC.sample,
       price: Faker::Number.between(from: 40, to: 250),
+      description: Faker::Music::SmashingPumpkins.lyric,
       user_id: users.flat_map { |u| u[:id] }.sample
     }
-    Vinyl.create(initial_vinyl)
+    vinyl = Vinyl.new(initial_vinyl)
+    vinyl.photo.attach(io: file, filename: album["id"], content_type: "image/png")
+    vinyl.save
   end
 end
+
+create_vinyl
 puts Vinyl.all
 
 # users = User.all
