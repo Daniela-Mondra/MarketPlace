@@ -20,7 +20,7 @@
   </div>
   <%# button previus %>
   <button
-    class="carousel-control-prev"
+    class="carousel-control-prev <%= 'd-block d-md-none' if vinyls.length <= 3 %>"
     type="button"
     data-bs-target="#carouselExampleControls"
     data-bs-slide="prev" data-action="carousel#scrollPrev">
@@ -29,7 +29,7 @@
   </button>
   <%# button next %>
   <button
-    class="carousel-control-next"
+    class="carousel-control-next <%= 'd-block d-md-none' if vinyls.length <= 3 %>"
     type="button"
     data-bs-target="#carouselExampleControls"
     data-bs-slide="next"
