@@ -7,7 +7,7 @@
         <p class="text-center"><strong><%= @sale.user.first_name %> <%= @sale.user.last_name %></strong></p>
 
         <div class="container">
-          <%= simple_form_for([ @sale, @sale.build_review ]) do |f| %>
+          <%= simple_form_for([ @sale, @review ]) do |f| %>
             <%= f.error_notification %>
 
             <div class="form-inputs">
@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-actions text-center">
-            <%= f.button :submit, class: "btn btn-warning text-white"%>
+              <%= f.button :submit, class: "btn btn-warning text-white" %>
             </div>
           <% end %>
         </div>

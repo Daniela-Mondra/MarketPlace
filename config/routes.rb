@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   get 'reviews/new'
   devise_for :users
 
@@ -7,7 +8,9 @@ Rails.application.routes.draw do
 
 
   get 'profile', to: 'application#profile', as: 'profile'
- 
+
+  resource :profile, only: [:show]
+  
   resources :vinyls do
     resources :sales, only: %i[new create]
   end

@@ -1,17 +1,17 @@
 class ReviewsController < ApplicationController
   before_action :set_sale, only: %i[new create]
+
   def new
-    @review = Review.new
+    @review = @sale.reviews.new
   end
 
   def create
-    @review = @sale.build_review(review_params)
+    @review = @sale.reviews.new(review_params)
     @review.user = current_user
 
     if @review.save
-      redirect_to '/sales', notice: 'Review created successfully!'
+      redirect_to sales_path, notice: 'Review created successfully!'
     else
-      Rails.logger.debug { "Review errors: #{@review.errors.full_messages}" }
       render :new
     end
   end
