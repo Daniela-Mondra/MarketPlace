@@ -1,4 +1,4 @@
-<div class="background-image heigth-full py-3" style="background-image: url(<%= asset_path 'vinyls.jpg' %>); background-size: cover; background-position: center;">
+<div class="background-image-detail heigth-full py-3">
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2 justify-content-center">
       <!-- Columna izquierda de 7/12 -->
@@ -37,29 +37,10 @@
     </div>
 
     <div>
-      <h3>Related products</h3>
+      <h3 class="py-4 fw-bold">Related vinyls</h3>
       <div class="container-carousel">
-        <%= render "carousel" %>
+        <%= render partial: "carousel", locals: { vinyls: @vinyls } %>
       </div>
-
-
-        <div class="r-added-cards">
-          <% @vinyls.each do |vinyl| %>
-            <%= link_to vinyl_path(vinyl), class: "card-link" do %>
-              <div class="card-vinyl">
-                <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill %>
-                <div class="card-vinyl-infos">
-                  <div>
-                  <h2><%= vinyl.title %></h2>
-                    <p><%= vinyl.artist %></p>
-                    <p><%= vinyl.genre %></p>
-                  </div>
-                <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
