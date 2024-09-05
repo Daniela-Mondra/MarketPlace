@@ -1,0 +1,27 @@
+<div class="background-image py-3" style="background-image: url(<%= asset_path 'back.jpg' %>); background-size: cover; background-position: center;">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="container-custom m-3 p-4 border" style="background-color: rgba(255, 255, 255);">
+        <h1 class="text-center">New Review</h1>
+        <p class="text-center">You are creating a review for seller:</p>
+        <p class="text-center"><strong><%= @sale.user.first_name %> <%= @sale.user.last_name %></strong></p>
+
+        <div class="container">
+          <%= simple_form_for([ @sale, @sale.build_review ]) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :title %>
+              <%= f.input :content %>
+              <%= f.input :rating, as: :select, collection: %w[1 2 3 4 5], prompt: "Select a rating on a 5 scale" %>
+            </div>
+
+            <div class="form-actions text-center">
+            <%= f.button :submit, class: "btn btn-warning text-white"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

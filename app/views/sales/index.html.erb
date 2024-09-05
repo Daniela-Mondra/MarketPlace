@@ -27,7 +27,7 @@
                 <p class="my-0"><%= sale.user.first_name %> <%= sale.user.last_name %></p>
               </div>
             </div>
-            <%= link_to 'Add a review for this seller', '', class: "btn btn-warning btn me-2 text-white" %>
+            <%= link_to 'Add a review for this seller', new_sale_review_path(sale), class: "btn btn-warning btn me-2 text-white" %>
           </div>
         </div>
       </div>
