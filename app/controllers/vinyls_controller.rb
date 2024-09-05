@@ -3,6 +3,10 @@ class VinylsController < ApplicationController
 
   def home
     @vinyls = Vinyl.all.order(created_at: :desc)
+    if params[:query].present?
+      sql_subquery = "title ILIKE :query OR artist ILIKE :query"
+      @vinyls = @vinyls.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def index
