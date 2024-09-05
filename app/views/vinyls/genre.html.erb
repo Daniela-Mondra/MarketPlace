@@ -1,0 +1,35 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("#{params[:genre]}.jpg") %>);">
+  <div class="container text-center">
+    <h1><strong><%= @genre.present? ? @genre.titleize : 'Selected Genre' %> Genre</strong></h1>
+  </div>
+</div>
+
+<div class="background-image py-5">
+  <div class="container py-4">
+    <% if @vinyls.any? %>
+      <div class="r-added-cards">
+        <% @vinyls.each do |vinyl| %>
+          <%= link_to vinyl_path(vinyl), class: "card-link" do %>
+            <div class="card-vinyl">
+              <% if vinyl.photo.present? %>
+                <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top img-fluid" %>
+              <% else %>
+                <img src="<%= asset_path 'default_image.jpg' %>" alt="Default Image" class="card-img-top img-fluid">
+              <% end %>
+              <div class="card-vinyl-infos">
+                <div>
+                  <h2><%= vinyl.title %></h2>
+                  <p><%= vinyl.artist %></p>
+                  <p><%= vinyl.genre %></p>
+                </div>
+                <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-center text-light">No vinyls found for this genre.</p>
+    <% end %>
+  </div>
+</div>

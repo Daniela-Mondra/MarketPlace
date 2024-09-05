@@ -14,7 +14,7 @@ class SalesController < ApplicationController
     @sale.user = current_user
 
     if @sale.save
-      redirect_to vinyl_path(params[:vinyl_id]), notice: 'Sales was successfully created.'
+      redirect_to sales_path, notice: 'Sales was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

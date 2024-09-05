@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :vinyls do
     resources :sales, only: %i[new create]
   end
+  get 'genre/:genre', to: 'vinyls#genre', as: 'genre'
 
   resources :sales, only: [:index]
 end
