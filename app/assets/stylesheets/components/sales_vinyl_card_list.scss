@@ -1,5 +1,5 @@
-.card-vinyl {
-  max-height: 287.19px;
+.sales-card-vinyl {
+  max-height: 500px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -14,26 +14,26 @@
 .card-link {
   text-decoration: none;
 }
-.card-vinyl > img {
+.sales-card-vinyl > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.card-vinyl h2 {
+.sales-card-vinyl h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-vinyl p {
+.sales-card-vinyl p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-vinyl .card-vinyl-infos {
+.sales-card-vinyl .sales-card-vinyl-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
