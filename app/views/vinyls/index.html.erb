@@ -6,19 +6,22 @@
       <div class="sales-card-vinyl">
         <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="sales-card-vinyl-infos">
-          <div>
+         <div>
           <h2><%= vinyl.title %></h2>
-            <p><%= vinyl.artist %></p>
-            <p><%= vinyl.genre %></p>
-          </div>
+          <p><%= vinyl.artist %></p>
+          <p><%= vinyl.genre %></p>
+         </div>
            <h2 class="sales-card-vinyl-pricing">$<%= vinyl.price %></h2>
          </div>
          <div class="d-flex justify-content-center align-items-center mb-2">
-         <%= link_to "Editar", edit_vinyl_path(vinyl), class: "btn btn-outline-success mx-2 btn fs-8" %>
-          <%= link_to "Eliminar", vinyl_path(vinyl), method: :delete, class: "btn btn-outline-danger mx-2 fs-8" %>
+          <%= link_to "Editar", edit_vinyl_path(vinyl), class: "btn btn-outline-success mx-2 btn fs-8" %>
+            <%= form_for vinyl, url: vinyl_path(vinyl), method: :delete, html: { class: 'd-inline' } do %>
+              <%= button_tag(type: :submit, class: "btn btn-outline-danger mx-2 fs-8", data: { confirm: 'Are you sure?' }) do %>
+                  Delete
+              <% end %>
+            <% end %>
          </div>
-         </div>
+        </div>
     <% end %>
-
   </div>
 </div>
