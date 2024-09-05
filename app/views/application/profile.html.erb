@@ -1,0 +1,27 @@
+<div class="background-image py-5" style="background-image: url(<%= asset_path 'back.jpg' %>); background-size: cover; background-position: center;">
+  <div class="container py-4">
+    <h1 class="text-center mb-4 text-light">My Profile</h1>
+
+    <div class="row">
+
+      <div class="col-md-4 text-center mb-4">
+        <% if @user.photo.attached? %>
+          <%= image_tag @user.photo, alt: "Profile Photo", class: "img-fluid rounded-circle" %>
+        <% else %>
+          <%= image_tag 'default_avatar.png', alt: "Default Avatar", class: "img-fluid rounded-circle" %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h5>
+            <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+            <p class="card-text"><strong>Address:</strong> <%= @user.address %></p>
+
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
