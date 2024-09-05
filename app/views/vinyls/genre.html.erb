@@ -1,9 +1,11 @@
-<div class="background-image py-5" style="background-image: url(<%= asset_path 'back.jpg' %>); background-size: cover; background-position: center;">
-  <div class="container py-4">
-    <h1 class="text-center mb-4 text-light">
-      Vinyls in <%= @genre.present? ? @genre.titleize : 'Selected Genre' %> Genre
-    </h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("#{params[:genre]}.jpg") %>);">
+  <div class="container text-center">
+    <h1><strong><%= @genre.present? ? @genre.titleize : 'Selected Genre' %> Genre</strong></h1>
+  </div>
+</div>
 
+<div class="background-image py-5">
+  <div class="container py-4">
     <% if @vinyls.any? %>
       <div class="r-added-cards">
         <% @vinyls.each do |vinyl| %>
