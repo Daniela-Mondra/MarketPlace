@@ -1,6 +1,6 @@
-<div class="background-image py-3" style="background-image: url(<%= asset_path 'people.jpg' %>); background-size: cover; background-position: center;">
+<div class="background-image heigth-full py-3" style="background-image: url(<%= asset_path 'people.jpg' %>); background-size: cover; background-position: center;">
   <div class="row justify-content-center">
-    <div class="col-5">
+    <div class="col col-md-5">
       <div class="container-custom m-3 p-4 border" style="background-color: rgba(255, 255, 255);">
         <h2 class="text-center">Log in</h2>
 
@@ -18,7 +18,7 @@
             </div>
 
             <div class="form-actions text-center">
-              <%= f.button :submit, "Log in", class: "btn btn-success" %>
+              <%= f.button :submit, "Log in", class: "btn btn-success px-4" %>
               <p class="mt-2"><%= render "devise/shared/links" %></p>
             </div>
           <% end %>

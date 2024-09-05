@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :vynils
   has_many :sales
+  has_many :reviews, dependent: :destroy
 
   has_one_attached :photo
 
