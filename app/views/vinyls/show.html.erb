@@ -1,31 +1,46 @@
-<div class="background-image py-3" style="background-image: url(<%= asset_path 'vinyls.jpg' %>); background-size: cover; background-position: center;">
+<div class="background-image-detail heigth-full py-3">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center my-3">
       <!-- Columna izquierda de 7/12 -->
-      <div class="col-5 mt-3">
-        <div class="card card-body">
-          <h1><%= @vinyl.title %></h1>
-          <p><%= @vinyl.artist %></p>
-          <%= cl_image_tag @vinyl.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="col col-md-5">
+        <div class="card card-body h-full rounded-4 p-4 shadow">
+          <%= cl_image_tag @vinyl.photo.key, class: "w-100", crop: :fill %>
         </div>
       </div>
       <!-- Columna derecha de 3/12 -->
-      <div class="col-7 mt-3"> <div class="card card-body">
-          <h3>Details</h3>
-          <div class="extra_info d-flex">
-            <div class="genre">
-              <p><i class="fa-solid fa-music"></i> Genre: <%= @vinyl.genre %></p>
-            </div>
-            <div class="price ms-5">
-              <p><i class="fa-solid fa-dollar-sign"></i> <%= @vinyl.price %></p>
-            </div>
+      <div class="col col-md-7">
+        <div class="card card-body d-flex flex-column gap-3 rounded-4 p-4 shadow">
+          <h1 class="m-0 fw-bold"><%= @vinyl.title %></h1>
+          <div class="price fs-3 text-primary">
+            <% price = @vinyl.price.to_f %>
+            <p class="m-0"><i class="fa-solid fa-dollar-sign"></i> <%= price %></p>
           </div>
-          <p>Description:</p>
-          <p><%= @vinyl.description %></p>
-          <p>Saled by:</p>
-          <p><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+
+          <h2 class="fs-5 m-0 fw-bold">Details</h2>
+          <div class="d-flex flex-column gap-2">
+            <p class="m-0"><i class="fa-solid fa-person"></i> <strong>Artist:</strong> <%= @vinyl.artist %></p>
+            <p class="m-0"><i class="fa-solid fa-music"></i> <strong>Genre:</strong> <%= @vinyl.genre %></p>
+
+            <p class="m-0 fw-bold">Description:</p>
+            <p class="m-0"><%= @vinyl.description %></p>
+            <p class="m-0 fw-bold">Saled by:</p>
+            <div class="d-flex gap-3 align-items-center">
+              <%= cl_image_tag @vinyl.user.photo.key, class: "avatar", crop: :fill %>
+              <p class="m-0"><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+            </div>
+
+          </div>
           <%= link_to 'BUY NOW!', new_vinyl_sale_path(@vinyl), class: 'btn btn-warning text-white', style:"font-size: 30px;"%>
+
+          </div>
         </div>
+    </div>
+
+    <div class="pt-5 pb-3">
+      <h3 class="pb-4 fw-bold">Related vinyls</h3>
+      <div class="container-carousel">
+        <%= render partial: "carousel", locals: { vinyls: @vinyls } %>
+      </div>
       </div>
     </div>
   </div>
