@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="carousel"
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
-    console.log("1111111");
+    console.log("hola 3");
   }
 }

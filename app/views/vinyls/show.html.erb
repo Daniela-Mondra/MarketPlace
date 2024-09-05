@@ -1,30 +1,137 @@
-<div class="background-image py-3" style="background-image: url(<%= asset_path 'vinyls.jpg' %>); background-size: cover; background-position: center;">
+<div class="background-image heigth-full py-3" style="background-image: url(<%= asset_path 'vinyls.jpg' %>); background-size: cover; background-position: center;">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center">
       <!-- Columna izquierda de 7/12 -->
-      <div class="col-5 mt-3">
-        <div class="card card-body">
-          <h1><%= @vinyl.title %></h1>
-          <p><%= @vinyl.artist %></p>
-          <%= cl_image_tag @vinyl.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="col col-md-5 mt-3">
+        <div class="card card-body rounded-4 p-4 shadow">
+          <%= cl_image_tag @vinyl.photo.key, class: "w-100", crop: :fill %>
         </div>
       </div>
       <!-- Columna derecha de 3/12 -->
-      <div class="col-7 mt-3"> <div class="card card-body">
-          <h3>Details</h3>
-          <div class="extra_info d-flex">
-            <div class="genre">
-              <p><i class="fa-solid fa-music"></i> Genre: <%= @vinyl.genre %></p>
-            </div>
-            <div class="price ms-5">
-              <p><i class="fa-solid fa-dollar-sign"></i> <%= @vinyl.price %></p>
-            </div>
+      <div class="col col-md-7 mt-3">
+        <div class="card card-body d-flex flex-column gap-3 rounded-4 p-4 shadow">
+          <h1 class="m-0 fw-bold"><%= @vinyl.title %></h1>
+          <div class="price fs-3 text-primary">
+            <% price = @vinyl.price.to_f %>
+            <p class="m-0"><i class="fa-solid fa-dollar-sign"></i> <%= price %></p>
           </div>
-          <p>Description:</p>
-          <p><%= @vinyl.description %></p>
-          <p>Saled by:</p>
-          <p><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+
+          <h2 class="fs-5 m-0 fw-bold">Details</h2>
+          <div class="d-flex flex-column gap-2">
+            <p class="m-0"><i class="fa-solid fa-person"></i> <strong>Artist:</strong> <%= @vinyl.artist %></p>
+            <p class="m-0"><i class="fa-solid fa-music"></i> <strong>Genre:</strong> <%= @vinyl.genre %></p>
+
+            <p class="m-0 fw-bold">Description:</p>
+            <p class="m-0"><%= @vinyl.description %></p>
+            <p class="m-0 fw-bold">Saled by:</p>
+            <div class="d-flex gap-3 align-items-center">
+              <%= cl_image_tag @vinyl.user.photo.key, class: "avatar", crop: :fill %>
+              <p class="m-0"><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
+            </div>
+
+          </div>
           <%= link_to 'BUY NOW!', new_vinyl_sale_path(@vinyl), class: 'btn btn-warning text-white', style:"font-size: 30px;"%>
+
+          </div>
+        </div>
+    </div>
+
+    <div>
+      <h3>Related products</h3>
+      <div class="container-carousel" >
+        <div class="container text-center my-3">
+		<div class="row mx-auto my-auto justify-content-center">
+			<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-controller="button">
+				<div class="carousel-inner" role="listbox">
+					<div class="carousel-item active">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/CB997E/333333?text=1" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 1</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/DDBEA9/333333?text=2" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 2</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/FFE8D6/333333?text=3" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 3</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/B7B7A4/333333?text=4" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 4</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/A5A58D/333333?text=5" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 5</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-img">
+									<img src="https://via.placeholder.com/700x500.png/6B705C/eeeeee?text=6" class="img-fluid">
+								</div>
+								<div class="card-img-overlay">Slide 6</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				</a>
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+      </div>
+
+
+        <div class="r-added-cards">
+          <% @vinyls.each do |vinyl| %>
+            <%= link_to vinyl_path(vinyl), class: "card-link" do %>
+              <div class="card-vinyl">
+                <%= cl_image_tag vinyl.photo.key, height: 300, width: 400, crop: :fill %>
+                <div class="card-vinyl-infos">
+                  <div>
+                  <h2><%= vinyl.title %></h2>
+                    <p><%= vinyl.artist %></p>
+                    <p><%= vinyl.genre %></p>
+                  </div>
+                <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

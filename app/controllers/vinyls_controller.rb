@@ -10,6 +10,7 @@ class VinylsController < ApplicationController
   end
 
   def show
+    @vinyls = Vinyl.where(genre: @vinyl.genre).excluding(@vinyl)
   end
 
   def new
