@@ -337,7 +337,7 @@ DEPENDENCIES
   json
   open-uri
   pg (~> 1.1)
-  pg_search
+  pg_search (~> 2.3.7)
   puma (>= 5.0)
   rails (~> 7.1.4)
   sassc-rails
