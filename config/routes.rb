@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
 
+  get 'profile', to: 'application#profile', as: 'profile'
+ 
   resources :vinyls do
     resources :sales, only: %i[new create]
   end

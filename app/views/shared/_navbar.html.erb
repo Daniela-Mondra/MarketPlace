@@ -26,7 +26,7 @@
             <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile", "#", class: "dropdown-item" %>
+              <%= link_to "My Profile", profile_path, class: "dropdown-item" %>
               <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
