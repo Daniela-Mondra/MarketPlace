@@ -10,31 +10,31 @@
   <h2 class="text-center">Genres</h2>
   <div class="cards">
     <%= link_to genre_path('rock'), style: "text-decoration: none; color: inherit;" do %>
-      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'rock.jpg' %>)">
         Rock
       </div>
     <% end %>
 
     <%= link_to genre_path('pop'), style: "text-decoration: none; color: inherit;" do %>
-      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'pop.jpg' %>)">
         Pop
       </div>
     <% end %>
 
     <%= link_to genre_path('alternative'), style: "text-decoration: none; color: inherit;" do %>
-      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/17906692/pexels-photo-17906692/free-photo-of-blanco-y-negro-hombres-sentado-jugando.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'alternative.jpg' %>)">
         Alternative
       </div>
     <% end %>
 
     <%= link_to genre_path('jazz'), style: "text-decoration: none; color: inherit;" do %>
-      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/733767/pexels-photo-733767.jpeg?auto=compress&cs=tinysrgb&w=400)">
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'jazz.jpg' %>)">
         Jazz
       </div>
     <% end %>
 
     <%= link_to genre_path('hip-hop'), style: "text-decoration: none; color: inherit;" do %>
-      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/8112576/pexels-photo-8112576.jpeg?auto=compress&cs=tinysrgb&w=400)">
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'hip-hop.jpg' %>)">
         Hip-hop
       </div>
     <% end %>
