@@ -2,13 +2,13 @@ class ReviewsController < ApplicationController
   before_action :set_sale, only: %i[new create]
 
   def new
-    @review = @sale.review.new
+    @review = Review.new
   end
 
   def create
-    @review = @sale.review.new(review_params)
-    @review.user = @sale.vinyl.user
-
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.sale = @sale
 
     if @review.save
       redirect_to sales_path, notice: 'Review created successfully!'
