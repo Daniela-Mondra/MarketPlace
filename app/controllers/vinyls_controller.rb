@@ -3,6 +3,10 @@ class VinylsController < ApplicationController
   before_action :set_vinyls_by_genre, only: :genre
   def home
     @vinyls = Vinyl.all.order(created_at: :desc)
+    if params[:query].present?
+      sql_subquery = "title ILIKE :query OR artist ILIKE :query"
+      @vinyls = @vinyls.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def index
@@ -10,6 +14,7 @@ class VinylsController < ApplicationController
   end
 
   def show
+    @vinyls = Vinyl.where(genre: @vinyl.genre).excluding(@vinyl)
   end
 
   def new

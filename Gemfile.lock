@@ -207,6 +207,9 @@ GEM
       uri
     orm_adapter (0.5.0)
     pg (1.5.7)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
@@ -339,6 +342,7 @@ DEPENDENCIES
   json
   open-uri
   pg (~> 1.1)
+  pg_search (~> 2.3.7)
   puma (>= 5.0)
   rails (~> 7.1.4)
   sassc-rails

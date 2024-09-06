@@ -1,0 +1,53 @@
+  <div class="container py-4">
+  <h1 class="text-center mb-4">My Profile</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-0 shadow-lg rounded">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+              <% if @user.photo.attached? %>
+                <%= cl_image_tag @user.photo.key, alt: "Profile Photo", class: "img-fluid rounded-circle" %>
+              <% else %>
+                <%= image_tag 'default_avatar.png', alt: "Default Avatar", class: "img-fluid rounded-circle" %>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="d-flex flex-column justify-content-center h-100">
+                <h3 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h3>
+                <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+                <p class="card-text"><strong>Address:</strong> <%= @user.address %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-center mt-5 mb-4">My Reviews</h2>
+  <div class="row justify-content-center">
+    <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+        <div class="col-md-8 mb-3">
+          <div class="card border-0 shadow-lg rounded">
+            <div class="card-body">
+              <h5 class="card-title"><%= review.title %></h5>
+              <p class="card-text"><%= review.content %></p>
+              <p class="card-text"><strong>Rating:</strong> <%= review.rating %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-md-8 mb-3">
+        <div class="card border-0 shadow-lg rounded text-center">
+          <div class="card-body">
+            <p>You have no reviews yet.</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

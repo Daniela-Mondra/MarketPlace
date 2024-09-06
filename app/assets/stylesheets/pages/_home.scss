@@ -2,3 +2,7 @@
 .custom-flex-fill {
   flex: initial !important; /* O usa auto según lo que necesites */
 }
+
+.heigth-full {
+  min-height: 100vh;
+}

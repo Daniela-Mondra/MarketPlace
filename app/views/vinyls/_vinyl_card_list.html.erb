@@ -1,4 +1,5 @@
-  <div class="r-added-cards">
+  <div class="r-added-cards" data-list-target="container">
+   <% if @vinyls.any? %>
     <% @vinyls.each do |vinyl| %>
      <%= link_to vinyl_path(vinyl), class: "card-link" do %>
       <div class="card-vinyl">
@@ -12,6 +13,9 @@
            <h2 class="card-vinyl-pricing">$<%= vinyl.price %></h2>
          </div>
         </div>
+      <% end %>
     <% end %>
+    <% else %>
+          <em>Sorry, no vinyl records found.</em>
     <% end %>
-  </div>
+    </div>
