@@ -2,11 +2,11 @@ class ReviewsController < ApplicationController
   before_action :set_sale, only: %i[new create]
 
   def new
-    @review = @sale.reviews.new
+    @review = @sale.review.new
   end
 
   def create
-    @review = @sale.reviews.new(review_params)
+    @review = @sale.review.new(review_params)
     @review.user = @sale.vinyl.user
 
 
