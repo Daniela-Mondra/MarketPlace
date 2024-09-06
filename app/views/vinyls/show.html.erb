@@ -30,7 +30,7 @@
             </div>
 
           </div>
-          <%= link_to 'BUY NOW!', new_vinyl_sale_path(@vinyl), class: 'btn btn-warning text-white', style:"font-size: 30px;"%>
+          <%= link_to 'BUY NOW!', new_vinyl_sale_path(@vinyl), class: 'btn btn-warning text-white', style:"font-size: 30px;" unless current_user.id == @vinyl.user_id%>
 
           </div>
         </div>

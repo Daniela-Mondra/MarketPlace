@@ -18,16 +18,17 @@
         </div>
 
           <%= simple_form_for [@vinyl, @sale] do |f| %>
+          <% unless current_user.id == @vinyl.user_id %>
             <p>Are you sure you want to buy this vinyl?</p>
 
             <div class="form-inputs">
               <%= f.hidden_field :vinyl_id, value: @vinyl.id %>
             </div>
-
             <div class="form-actions">
               <%= f.submit "Yes", class: "btn btn-success" %>
               <%= link_to "No", vinyl_path(@vinyl), class: "btn btn-danger" %>
             </div>
+          <% end %>
           <% end %>
         </div>
       </div>
