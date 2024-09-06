@@ -2,7 +2,9 @@ class SalesController < ApplicationController
   before_action :set_vinyl, only: %i[new create]
 
   def index
-    @sales = Sale.all
+    @user = current_user
+    @sales = @user.sales
+    
   end
 
   def new
