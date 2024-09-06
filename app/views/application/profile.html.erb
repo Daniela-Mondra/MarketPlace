@@ -18,6 +18,10 @@
                 <h3 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h3>
                 <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
                 <p class="card-text"><strong>Address:</strong> <%= @user.address %></p>
+                <div style="width: 100%; height: 600px;"
+                  data-controller="map"
+                  data-map-markers-value="<%= @markers.to_json %>"
+                  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
               </div>
             </div>
           </div>
