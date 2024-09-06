@@ -5,5 +5,4 @@ export default class extends Controller {
   connect() {
     this.containerTarget.scrollIntoView({behavior: "smooth"});
   }
-
 }
