@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   root to: "vinyls#home"
   get "up" => "rails/health#show", as: :rails_health_check
 
-
   get 'profile', to: 'application#profile', as: 'profile'
 
   resource :profile, only: [:show]
-  
+
   resources :vinyls do
     resources :sales, only: %i[new create]
   end
