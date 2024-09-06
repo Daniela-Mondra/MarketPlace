@@ -23,7 +23,7 @@
 
             <p class="m-0 fw-bold">Description:</p>
             <p class="m-0"><%= @vinyl.description %></p>
-            <p class="m-0 fw-bold">Saled by:</p>
+            <p class="m-0 fw-bold">Sold by:</p>
             <div class="d-flex gap-3 align-items-center">
               <%= cl_image_tag @vinyl.user.photo.key, class: "avatar", crop: :fill %>
               <p class="m-0"><%= @vinyl.user.first_name %> <%= @vinyl.user.last_name %></p>
