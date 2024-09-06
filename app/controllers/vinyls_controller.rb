@@ -10,7 +10,9 @@ class VinylsController < ApplicationController
   end
 
   def index
-    @vinyls = Vinyl.all.order(created_at: :desc)
+    @user = current_user
+    @vinyls = Vinyl.where(user_id: current_user).order(created_at: :desc)
+    #@vinyls = Vinyl.all.order(created_at: :desc)
   end
 
   def show
