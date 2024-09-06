@@ -4,6 +4,9 @@ export default class extends Controller {
   static targets = ["container"]
   connect() {
     console.log("conectado")
-    this.containerTarget.scrollIntoView({behavior: "smooth"});
+    console.log(this.element)
+    const shouldScroll = this.element.dataset.scroll === "true";
+    if (shouldScroll)
+      { this.element.scrollIntoView({ behavior: 'smooth' }); }
   }
 }

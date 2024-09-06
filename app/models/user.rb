@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :vynils
+  has_many :vinyls
   has_many :sales
   has_many :reviews, dependent: :destroy
 

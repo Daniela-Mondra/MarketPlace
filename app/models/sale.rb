@@ -1,5 +1,5 @@
 class Sale < ApplicationRecord
-  has_many :reviews, dependent: :destroy
+  has_one :review, dependent: :destroy
   belongs_to :user
   belongs_to :vinyl
 end

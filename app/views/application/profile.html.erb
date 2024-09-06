@@ -28,26 +28,28 @@
 
   <h2 class="text-center mt-4 mb-3" >My Reviews</h2>
   <div class="row justify-content-center">
-    <% if @reviews.present? %>
-      <% @reviews.reverse.each do |review| %>
+    <% if @sales.present? %>
+      <% @sales.reverse.each do |sale| %>
+      <% if sale.review %>
         <div class="col-md-8 mb-3">
           <div class="card border-0 shadow-lg rounded">
             <div class="card-body">
               <div class="row">
-                <p class="card-text m-1" style="color: gray;"><%= review.created_at.strftime("%B %d, %Y") %></p>
+                <p class="card-text m-1" style="color: gray;"><%= sale.review.created_at.strftime("%B %d, %Y") %></p>
                 <div class="col-4">
-                  <%= cl_image_tag review.user.photo.key, class: "avatar mx-2", alt: "dropdown menu", crop: :fill %>
-                  <%= review.user.first_name %> <%= review.user.last_name %>
+                  <%= cl_image_tag sale.review.user.photo.key, class: "avatar mx-2", alt: "dropdown menu", crop: :fill %>
+                  <%= sale.review.user.first_name %> <%= sale.review.user.last_name %>
                 </div>
                 <div class="col-8">
-                  <h4 class="card-title"><strong><%= review.title %></strong></h4>
-                  <p class="card-text">"<%= review.content %>"</p>
-                  <p class="card-text"><i class="fa-solid fa-star"></i> <%= review.rating %>/5</p>
+                  <h4 class="card-title"><strong><%= sale.review.title %></strong></h4>
+                  <p class="card-text">"<%= sale.review.content %>"</p>
+                  <p class="card-text"><i class="fa-solid fa-star"></i> <%= sale.review.rating %>/5</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+         <% end %>
       <% end %>
     <% else %>
       <div class="col-md-8 mb-3">

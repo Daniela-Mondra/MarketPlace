@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def profile
     @user = current_user
-    @reviews = @user.reviews.includes(:sale)
+    @sales = @user.sales
   end
 
   protected
