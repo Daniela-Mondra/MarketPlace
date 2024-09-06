@@ -6,5 +6,4 @@ export default class extends Controller {
     console.log("conectado")
     this.containerTarget.scrollIntoView({behavior: "smooth"});
   }
-
 }
