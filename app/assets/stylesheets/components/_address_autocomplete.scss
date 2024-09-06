@@ -26,7 +26,7 @@
     @extend .list-group;
 
     li {
-      @extend .list-group-item;
+      @extend .list-group-item.list-group-item-action;
     }
     .mapboxgl-ctrl-geocoder--powered-by {
       @extend .d-none;
