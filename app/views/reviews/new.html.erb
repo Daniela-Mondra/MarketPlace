@@ -4,7 +4,8 @@
       <div class="container-custom m-3 p-4 border" style="background-color: rgba(255, 255, 255);">
         <h1 class="text-center">New Review</h1>
         <p class="text-center">You are creating a review for seller:</p>
-        <p class="text-center"><strong><%= @sale.user.first_name %> <%= @sale.user.last_name %></strong></p>
+        <p class="text-center"><%= cl_image_tag @sale.vinyl.user.photo.key, class: "avatar me-3", alt: "dropdown menu", crop: :fill %>
+        <strong><%= @sale.vinyl.user.first_name %> <%= @sale.vinyl.user.last_name %></strong></p>
 
         <div class="container">
           <%= simple_form_for([ @sale, @review ]) do |f| %>

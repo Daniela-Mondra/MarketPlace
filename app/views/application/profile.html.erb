@@ -29,13 +29,22 @@
   <h2 class="text-center mt-5 mb-4">My Reviews</h2>
   <div class="row justify-content-center">
     <% if @reviews.present? %>
-      <% @reviews.each do |review| %>
+      <% @reviews.reverse.each do |review| %>
         <div class="col-md-8 mb-3">
           <div class="card border-0 shadow-lg rounded">
             <div class="card-body">
-              <h5 class="card-title"><%= review.title %></h5>
-              <p class="card-text"><%= review.content %></p>
-              <p class="card-text"><strong>Rating:</strong> <%= review.rating %></p>
+              <div class="row">
+                <p class="card-text m-1" style="color: gray;"><%= review.created_at.strftime("%B %d, %Y") %></p>
+                <div class="col-4">
+                  <%= cl_image_tag review.user.photo.key, class: "avatar mx-2", alt: "dropdown menu", crop: :fill %>
+                  <%= review.user.first_name %> <%= review.user.last_name %>
+                </div>
+                <div class="col-8">
+                  <h4 class="card-title"><strong><%= review.title %></strong></h4>
+                  <p class="card-text">"<%= review.content %>"</p>
+                  <p class="card-text"><i class="fa-solid fa-star"></i> <%= review.rating %>/5</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

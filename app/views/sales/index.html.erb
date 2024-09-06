@@ -23,8 +23,8 @@
             <div class="div">
               <strong>Seller:</strong>
               <div class="div d-flex my-3 align-items-center justify-content-center">
-                <%= cl_image_tag current_user.photo.key, class: "avatar me-3", alt: "dropdown menu", crop: :fill %>
-                <p class="my-0"><%= sale.user.first_name %> <%= sale.user.last_name %></p>
+                <%= cl_image_tag sale.vinyl.user.photo.key, class: "avatar me-3", alt: "dropdown menu", crop: :fill %>
+                <p class="my-0"><%= sale.vinyl.user.first_name %> <%= sale.vinyl.user.last_name %></p>
               </div>
             </div>
             <%= link_to 'Add a review for this seller', new_sale_review_path(sale), class: "btn btn-warning btn me-2 text-white" %>
