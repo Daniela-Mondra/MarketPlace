@@ -7,7 +7,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @sale.reviews.new(review_params)
-    @review.user = @sale.vinyl.user
+    #@review.user = @sale.vinyl.user
+    
 
     if @review.save
       redirect_to sales_path, notice: 'Review created successfully!'
