@@ -1,6 +1,6 @@
 <div class="background-image py-3" style="background-image: url(<%= asset_path 'people.jpg' %>); background-size: cover; background-position: center;">
   <div class="row justify-content-center">
-    <div class="col-5">
+    <div class="col col-sm-8 col-md-7 col-lg-5">
       <div class="container-custom m-3 p-4 border" style="background-color: rgba(255, 255, 255);">
         <h2 class="text-center">Sign up</h2>
 
@@ -18,7 +18,16 @@
                           input_html: { autocomplete: "family-name" } %>
               <%= f.input :address,
                           required: true,
-                          input_html: { autocomplete: "street-address" } %>
+                          wrapper_html: {
+                            data: {
+                              controller: 'address-autocomplete',
+                              address_autocomplete_api_key_value: ENV['MAPBOX_API_KEY']
+                            }
+                          },
+                          input_html: {
+                            data: { address_autocomplete_target: 'address' },
+                            class: 'd-none' } %>
+
               <%= f.input :photo, required: true, as: :file %>
               <%= f.input :email,
                           required: true,
